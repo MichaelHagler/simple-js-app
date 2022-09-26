@@ -4,9 +4,15 @@ let pokemonList = [
   {name: "Bulbasaur", type: ["grass", "poison"], height: 0.7}
 ];
 
-// create a for loop that iterates over each item. 
+// create a for loop that iterates over each item.
+// conditional for biggest pokemon
 // document.write() pokemons name and height (bulbasuar (height: 7))
 
 for (let i = 0; i < pokemonList.length; i++) {
-  document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + ")");
+  if (pokemonList[i].height > 0.6) {
+    document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + ")-Wow that's big! ");
+  }
+  else {
+    document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + ") ");
+  }
 }
