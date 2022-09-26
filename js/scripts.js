@@ -22,9 +22,9 @@ let pokemonList = [
 
 for (let i = 0; i < pokemonList.length; i++) {
   if (pokemonList[i].height > 0.6) {
-    document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height})-Wow that's big! `);
+    document.body.innerHTML += (`${pokemonList[i].name} (height: ${pokemonList[i].height})-Wow that's big! `);
   }
   else {
-    document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height}) `);
+    document.body.innerHTML += (`${pokemonList[i].name} (height: ${pokemonList[i].height}) `);
   }
 }
