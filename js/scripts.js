@@ -1,3 +1,5 @@
+
+//Pokidex
 let pokemonList = [
   {
     name: "Squirtle",
@@ -16,15 +18,15 @@ let pokemonList = [
   }
 ];
 
-// create a for loop that iterates over each item.
+// for loop that iterates over each item.
 // conditional for biggest pokemon
-// document.write() pokemons name and height (bulbasuar (height: 7))
+// created HTML elements
 
 for (let i = 0; i < pokemonList.length; i++) {
   if (pokemonList[i].height > 0.6) {
-    document.body.innerHTML += (`${pokemonList[i].name} (height: ${pokemonList[i].height})-Wow that's big! `);
+    document.body.innerHTML += (`<p>${pokemonList[i].name} (height: ${pokemonList[i].height}) -Wow that's big!</p>`);
   }
   else {
-    document.body.innerHTML += (`${pokemonList[i].name} (height: ${pokemonList[i].height}) `);
+    document.body.innerHTML += (`<p>${pokemonList[i].name} (height: ${pokemonList[i].height})</p>`);
   }
 }
