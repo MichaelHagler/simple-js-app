@@ -18,15 +18,13 @@ let pokemonList = [
   }
 ];
 
-// for loop that iterates over each item.
-// conditional for biggest pokemon
-// created HTML elements
 
-for (let i = 0; i < pokemonList.length; i++) {
-  if (pokemonList[i].height > 0.6) {
-    document.body.innerHTML += (`<p>${pokemonList[i].name} (height: ${pokemonList[i].height}) -Wow that's big!</p>`);
+// forEach()
+// lists all pokemon from pokemonList array
+pokemonList.forEach(function(pokemon){
+  if (pokemon.height > 0.6){
+    document.write(`<p>${pokemon.name} (height: ${pokemon.height}) -Wow that's big!</p>`)
+  } else{
+    document.write(`<p>${pokemon.name} (height: ${pokemon.height})</p>`);
   }
-  else {
-    document.body.innerHTML += (`<p>${pokemonList[i].name} (height: ${pokemonList[i].height})</p>`);
-  }
-}
+});
