@@ -19,10 +19,12 @@ let pokemonRepository = (function(){
     }
   ];
 
+  //for adding pokemon to pokemonList
   function add(pokemon) {
     pokemonList.push(pokemon);
   }
 
+  // for returning pokemonList to use outside IIFE
   function getAll() {
     return pokemonList;
   }
