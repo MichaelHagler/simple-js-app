@@ -21,13 +21,20 @@ let pokemonRepository = (function(){
 
   //for adding pokemon to pokemonList
   function add(pokemon) {
-    pokemonList.push(pokemon);
+    if(typeof pokemon === 'object'){
+      console.log("this is a valid object");
+      pokemonList.push(pokemon);
+    } else{
+      console.log("this is not a valid object");
+    }
+    
   }
 
   // for returning pokemonList to use outside IIFE
   function getAll() {
     return pokemonList;
   }
+
 
   return {
     add: add,
@@ -36,8 +43,8 @@ let pokemonRepository = (function(){
 })();
 console.log(pokemonRepository.getAll());
 console.log(pokemonRepository.add({name: "Weedle", type: ["bug", "poison"], height: 1}));
+console.log(pokemonRepository.add("hello world"));
 console.log(pokemonRepository.pokemonList);
-
 
 
 // forEach()
