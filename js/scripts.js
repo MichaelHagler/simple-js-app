@@ -1,7 +1,7 @@
 
 //Pokidex
-let pokemonRepository = (function(){
-  let pokemonList = [
+const pokemonRepository = (function(){
+  const pokemonList = [
     {
       name: "Squirtle",
       type: "water", 
