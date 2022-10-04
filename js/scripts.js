@@ -1,7 +1,7 @@
 
 //Pokidex
 const pokemonRepository = (function(){
-  const pokemonList = [
+  const repository = [
     {
       name: "Squirtle",
       type: "water", 
@@ -19,11 +19,11 @@ const pokemonRepository = (function(){
     }
   ];
 
-  //for adding pokemon to pokemonList
+  //condition for adding pokemon to pokemonList
   function add(pokemon) {
     if(typeof pokemon === 'object'){
       console.log("this is a valid object");
-      pokemonList.push(pokemon);
+      repository.push(pokemon);
     } else{
       console.log("this is not a valid object");
     }
@@ -32,26 +32,33 @@ const pokemonRepository = (function(){
 
   // for returning pokemonList to use outside IIFE
   function getAll() {
-    return pokemonList;
+    return repository;
   }
 
+  function addListItem(pokemon){
+    const pokemonList = document.querySelector(".pokemon-list");
+    const listpokemon = document.createElement('li');
+    const button = document.createElement('button');
 
+    button.innerText = pokemon.name;
+    button.classList.add('button-class');
+
+    listpokemon.appendChild(button);
+    pokemonList.appendChild(listpokemon);
+  }
   return {
     add: add,
-    getAll: getAll
+    getAll: getAll,
+    addListItem: addListItem
     }
 })();
 console.log(pokemonRepository.getAll());
 console.log(pokemonRepository.add({name: "Weedle", type: ["bug", "poison"], height: 1}));
-console.log(pokemonRepository.add("hello world"));
-console.log(pokemonRepository.pokemonList);
+console.log(pokemonRepository.getAll());
 
 
 // forEach()
 // lists all pokemon from pokemonList array
 pokemonRepository.getAll().forEach(function(pokemon){
-  if (pokemon.height > 0.6){
-    document.body.innerHTML += (`<p>${pokemon.name} (height: ${pokemon.height}) -Wow that's big!</p>`);
-  } else{
-    document.body.innerHTML += (`<p>${pokemon.name} (height: ${pokemon.height})</p>`);
-  }});
+  pokemonRepository.addListItem(pokemon);
+});
