@@ -22,7 +22,6 @@ const pokemonRepository = (function(){
   //condition for adding pokemon to pokemonList
   function add(pokemon) {
     if(typeof pokemon === 'object'){
-      console.log("this is a valid object");
       repository.push(pokemon);
     } else{
       console.log("this is not a valid object");
@@ -35,23 +34,25 @@ const pokemonRepository = (function(){
     return repository;
   }
 
+   //show more details of pokemon
+   function showDetails(pokemon){
+    console.log(pokemon);
+  }
+
   // add list of pokemon on webpage
   function addListItem(pokemon){
     const pokemonList = document.querySelector(".pokemon-list");
     const listpokemon = document.createElement('li');
     const button = document.createElement('button');
 
-    button.addEventListener('click', showDetails);
     button.innerText = pokemon.name;
     button.classList.add('button-class');
+    button.addEventListener('click', function (pokemon) {
+      showDetails(pokemon.name);
+    });
 
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
-  }
-
-  //show more details of pokemon
-  function showDetails(pokemon){
-    console.log(pokemon);
   }
 
   return {
