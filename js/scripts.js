@@ -1,23 +1,8 @@
 
 //Pokidex
 const pokemonRepository = (function(){
-  const repository = [
-    {
-      name: "Squirtle",
-      type: "water", 
-      height: 0.5
-    },
-    {
-      name: "Charmander",
-      type: "fire", 
-      height: 0.6
-    },
-    {
-      name: "Bulbasaur", 
-      type: ["grass", "poison"], 
-      height: 0.7
-    }
-  ];
+  const repository = [];
+  const apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
   //condition for adding pokemon to pokemonList
   function add(pokemon) {
@@ -55,19 +40,45 @@ const pokemonRepository = (function(){
     pokemonList.appendChild(listpokemon);
   }
 
+  //load pokemon from api
+  function loadList() {
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        const pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+      });
+    }).catch(function (e) {
+      console.error(e);
+    })
+  }
+
+  function loadDetails(item) {
+    const url = item.detailsUrl;
+    return fetch(url.then(function (response) {
+      return response.json();
+    }))
+  }
+
   return {
     add: add,
     getAll: getAll,
-    addListItem: addListItem
-    }
+    loadList: loadList
+    };
 })();
+
+
 console.log(pokemonRepository.getAll());
 console.log(pokemonRepository.add({name: "Weedle", type: ["bug", "poison"], height: 1}));
 console.log(pokemonRepository.getAll());
 
-
-// forEach()
-// lists all pokemon from pokemonList array
-pokemonRepository.getAll().forEach(function(pokemon){
-  pokemonRepository.addListItem(pokemon);
+//calling loadList
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon){ //creates pokemon button
+    pokemonRepository.addListItem(pokemon);
+  });
 });
