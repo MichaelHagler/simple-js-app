@@ -8,11 +8,9 @@ const pokemonRepository = (function(){
   function add(pokemon) {
     if(
       typeof pokemon === 'object' &&
-      "name" in pokemon &&
-      "height" in pokemon &&
-      "types" in pokemon
+      "name" in pokemon
       ) {
-      repository.push(pokemon);
+      pokemonList.push(pokemon);
     } else{
       console.log("pokemon is not correct");
     }
@@ -20,7 +18,7 @@ const pokemonRepository = (function(){
 
   // for returning pokemonList to use outside IIFE
   function getAll() {
-    return repository;
+    return pokemonList;
   }
 
    //show more details of pokemon
@@ -78,17 +76,13 @@ const pokemonRepository = (function(){
 
   return {
     add: add,
-    addListItem,
     getAll: getAll,
+    addListItem: addListItem,
     loadList: loadList,
-    loadDetails: loadDetails
+    loadDetails: loadDetails,
+    showDetails: showDetails
     };
 })();
-
-
-console.log(pokemonRepository.getAll());
-console.log(pokemonRepository.add({name: "Weedle", type: ["bug", "poison"], height: 1}));
-console.log(pokemonRepository.getAll());
 
 //calling loadList
 pokemonRepository.loadList().then(function() {
