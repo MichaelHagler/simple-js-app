@@ -8,7 +8,8 @@ const pokemonRepository = (function(){
   function add(pokemon) {
     if(
       typeof pokemon === 'object' &&
-      "name" in pokemon
+      "name" in pokemon &&
+      "detailsUrl" in pokemon
       ) {
       pokemonList.push(pokemon);
     } else{
@@ -31,12 +32,12 @@ const pokemonRepository = (function(){
   // add list of pokemon on webpage
   function addListItem(pokemon){
     const pokemonList = document.querySelector(".pokemon-list");
-    const listpokemon = document.createElement('li');
-    const button = document.createElement('button');
+    const listpokemon = document.createElement("li");
+    const button = document.createElement("button");
 
     button.innerText = pokemon.name;
-    button.classList.add('button-class');
-    button.addEventListener('click', function () {
+    button.classList.add("button-class");
+    button.addEventListener("click", function () {
       showDetails(pokemon.name);
     });
 
@@ -44,11 +45,31 @@ const pokemonRepository = (function(){
     pokemonList.appendChild(listpokemon);
   }
 
+  //loading messages
+  function loadingMessages(){
+    const messageBox = document.querySelector(".loading-messages");
+    const message = document.createElement("p");
+
+    messageBox.classList.add("");
+    message.innerText = "Catching Pokemon!";
+
+    messageBox.appendChild(message);
+  }
+  function showLoadingMessage() {
+    console.log("Catching Pokemon!");
+  }
+
+  function hideLoadingMessage() {
+    console.log("Pokemon caught!");
+  }
+
   //load pokemon from api
   function loadList() {
+    showLoadingMessage();
     return fetch(apiUrl).then(function (response) {
       return response.json();
     }).then(function (json) {
+      hideLoadingMessage();
       json.results.forEach(function (item) {
         const pokemon = {
           name: item.name,
@@ -57,19 +78,23 @@ const pokemonRepository = (function(){
         add(pokemon);
       });
     }).catch(function (e) {
+      hideLoadingMessage(); 
       console.error(e);
     })
   }
 
   function loadDetails(item) {
     const url = item.detailsUrl;
+    showLoadingMessage();
     return fetch(url).then(function (response) {
       return response.json();
     }).then(function (details) {
+      hideLoadingMessage();
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
     }).catch(function (e) {
+      hideLoadingMessage();
       console.error(e);
     });
   }
