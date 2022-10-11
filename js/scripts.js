@@ -46,18 +46,17 @@ const pokemonRepository = (function(){
   }
 
   //loading messages
-  function loadingMessages(){
-    const messageBox = document.querySelector(".loading-messages");
+  function showLoadingMessage(){
+    const messageBox = document.querySelector("div");
     const message = document.createElement("p");
 
-    messageBox.classList.add("");
+    messageBox.classList.add("loading-messages");
     message.innerText = "Catching Pokemon!";
 
     messageBox.appendChild(message);
+
   }
-  function showLoadingMessage() {
-    console.log("Catching Pokemon!");
-  }
+  showLoadingMessage();
 
   function hideLoadingMessage() {
     console.log("Pokemon caught!");
@@ -65,11 +64,9 @@ const pokemonRepository = (function(){
 
   //load pokemon from api
   function loadList() {
-    showLoadingMessage();
     return fetch(apiUrl).then(function (response) {
       return response.json();
     }).then(function (json) {
-      hideLoadingMessage();
       json.results.forEach(function (item) {
         const pokemon = {
           name: item.name,
@@ -78,15 +75,14 @@ const pokemonRepository = (function(){
         add(pokemon);
       });
     }).catch(function (e) {
-      hideLoadingMessage(); 
       console.error(e);
     })
   }
 
   function loadDetails(item) {
     const url = item.detailsUrl;
-    showLoadingMessage();
     return fetch(url).then(function (response) {
+      showLoadingMessage();
       return response.json();
     }).then(function (details) {
       hideLoadingMessage();

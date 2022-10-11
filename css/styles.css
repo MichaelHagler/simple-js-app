@@ -9,7 +9,10 @@ body{
   line-height: 1.6;
 }
 
-
+.loading-messages{
+  display: none;
+  border: solid 3px black;
+}
 
 .button-class{
   background-color: #4caf50; /* Green */
