@@ -30,8 +30,8 @@ const pokemonRepository = (function () {
 
     button.innerText = pokemon.name;
     button.classList.add("button-class");
-    button.addEventListener("click", function () {
-      showDetails(pokemon.name);
+    button.addEventListener("click", function (event) {
+      showDetails(pokemon);
     });
 
     listpokemon.appendChild(button);
@@ -47,7 +47,7 @@ const pokemonRepository = (function () {
     message.innerText = "Catching Pokemon!";
 
     messageBox.appendChild(message);
-
+    
   }
   showLoadingMessage();
 
@@ -66,6 +66,7 @@ const pokemonRepository = (function () {
           detailsUrl: item.url
         };
         add(pokemon);
+        console.log(pokemon);
       });
     }).catch(function (e) {
       console.error(e);
