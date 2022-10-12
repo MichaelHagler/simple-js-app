@@ -1,12 +1,12 @@
 
 //Pokidex
-const pokemonRepository = (function(){
+const pokemonRepository = (function () {
   const pokemonList = [];
-  const apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+  const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   //condition for adding pokemon to pokemonList
   function add(pokemon) {
-    if(
+    if (
       typeof pokemon === 'object' &&
       "name" in pokemon &&
       "detailsUrl" in pokemon
@@ -20,13 +20,6 @@ const pokemonRepository = (function(){
   // for returning pokemonList to use outside IIFE
   function getAll() {
     return pokemonList;
-  }
-
-   //show more details of pokemon
-   function showDetails(pokemon){
-    loadDetails(pokemon).then(function () {
-      console.log(pokemon);
-    });
   }
 
   // add list of pokemon on webpage
@@ -92,6 +85,13 @@ const pokemonRepository = (function(){
     }).catch(function (e) {
       hideLoadingMessage();
       console.error(e);
+    });
+  }
+
+  //show more details of pokemon
+  function showDetails(item){
+    pokemonRepository.loadDetails(item).then(function () {
+      console.log(item);
     });
   }
 
