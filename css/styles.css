@@ -9,8 +9,13 @@ body{
   line-height: 1.6;
 }
 
-.loading-messages{
+#id{
   display: none;
+  border: solid 3px black;
+}
+
+.loading-messages{
+  display: block;
   border: solid 3px black;
 }
 

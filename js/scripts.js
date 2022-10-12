@@ -39,7 +39,7 @@ const pokemonRepository = (function () {
   }
 
   //loading messages
-  function showLoadingMessage(){
+  function showLoadingMessage() {
     const messageBox = document.querySelector("div");
     const message = document.createElement("p");
 
@@ -47,12 +47,12 @@ const pokemonRepository = (function () {
     message.innerText = "Catching Pokemon!";
 
     messageBox.appendChild(message);
-    
   }
-  showLoadingMessage();
 
   function hideLoadingMessage() {
-    console.log("Pokemon caught!");
+    setTimeout(function() {
+      document.querySelector("div").classList.remove("loading-messages");
+    }, 500);
   }
 
   //load pokemon from api
