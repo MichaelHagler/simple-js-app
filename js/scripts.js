@@ -44,7 +44,7 @@ const pokemonRepository = (function () {
     const message = document.createElement("p");
 
     messageBox.classList.add("loading-messages");
-    message.innerText = "Catching Pokemon!";
+    message.innerText = "Catching Pokemon...";
 
     messageBox.appendChild(message);
   }
@@ -52,6 +52,7 @@ const pokemonRepository = (function () {
   function hideLoadingMessage() {
     setTimeout(function() {
       document.querySelector("div").classList.remove("loading-messages");
+      document.querySelector("p").remove();
     }, 500);
   }
 
