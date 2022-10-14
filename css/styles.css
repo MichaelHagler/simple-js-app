@@ -9,11 +9,6 @@ body{
   line-height: 1.6;
 }
 
-#id{
-  display: none;
-  border: solid 3px black;
-}
-
 .loading-messages{
   display: flex;
   align-content: center;
