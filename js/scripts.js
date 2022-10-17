@@ -39,22 +39,22 @@ const pokemonRepository = (function () {
   }
 
   //loading messages
-  function showLoadingMessage() {
-    const messageBox = document.querySelector("div");
-    const message = document.createElement("p");
+  // function showLoadingMessage() {
+  //   const messageBox = document.querySelector("div");
+  //   const message = document.createElement("p");
 
-    messageBox.classList.add("loading-messages");
-    message.innerText = "Catching Pokemon...";
+  //   messageBox.classList.add("loading-messages");
+  //   message.innerText = "Catching Pokemon...";
 
-    messageBox.appendChild(message);
-  }
+  //   messageBox.appendChild(message);
+  // }
 
-  function hideLoadingMessage() {
-    setTimeout(function() {
-      document.querySelector("div").classList.remove("loading-messages");
-      document.querySelector("p").remove();
-    }, 500);
-  }
+  // function hideLoadingMessage() {
+  //   setTimeout(function() {
+  //     document.querySelector("div").classList.remove("loading-messages");
+  //     document.querySelector("p").remove();
+  //   }, 500);
+  // }
 
   //load pokemon from api
   function loadList() {
@@ -77,15 +77,15 @@ const pokemonRepository = (function () {
   function loadDetails(item) {
     const url = item.detailsUrl;
     return fetch(url).then(function (response) {
-      showLoadingMessage();
+      //showLoadingMessage();
       return response.json();
     }).then(function (details) {
-      hideLoadingMessage();
+      //hideLoadingMessage();
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
     }).catch(function (e) {
-      hideLoadingMessage();
+      //hideLoadingMessage();
       console.error(e);
     });
   }
