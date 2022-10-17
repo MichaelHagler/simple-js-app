@@ -90,9 +90,41 @@ const pokemonRepository = (function () {
     });
   }
 
+// modal IIFE displays pokemon details in modal
+(function(){
+  function showModal(){
+    const modalContainer = document.querySelector('#modal-container');
+
+    modalContainer.innerHTML = '';
+
+    //create modal
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+
+    //close button for modal
+    const closeButtonElement = document.createElement('button');
+    closeButtonElement.classList.add('modal-close');
+    closeButtonElement.innerText = 'close';
+    //modal content
+    //render code
+    modal.appendChild(closeButtonElement);
+    modalContainer.appendChild(modal);
+
+    modalContainer.classList.add('is-visible');
+  
+  function hideModal(){
+    const modalContainer = document.querySelector('#modal-container');
+    modalContainer.classList.remove('is-visible');
+  }
+
+  }
+
+})();
   //show more details of pokemon
   function showDetails(item){
     pokemonRepository.loadDetails(item).then(function () {
+      const pokemonDetails = document.createElement('p');
+      pokemonDetails.innerText = item;
       console.log(item);
     });
   }
@@ -113,5 +145,3 @@ pokemonRepository.loadList().then(function() {
     pokemonRepository.addListItem(pokemon);
   });
 });
-
-//small change
