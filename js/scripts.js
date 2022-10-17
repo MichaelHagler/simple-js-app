@@ -94,7 +94,7 @@ const pokemonRepository = (function () {
   //show more details of pokemon
   function showDetails(item){
     pokemonRepository.loadDetails(item).then(function () {
-      console.log(item);
+      showModal(pokemon, item);
     });
   }
 
@@ -166,7 +166,4 @@ pokemonRepository.loadList().then(function() {
     const modalContainer = document.querySelector('#modal-container');
     modalContainer.classList.remove('is-visible');
   }
-  document.querySelector('#show-modal').addEventListener('click', () => {
-    showModal(pokemon, item);
-  })
 })();
