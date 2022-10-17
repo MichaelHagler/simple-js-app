@@ -91,32 +91,7 @@ const pokemonRepository = (function () {
     });
   }
 
-  //show more details of pokemon
-  function showDetails(item){
-    pokemonRepository.loadDetails(item).then(function () {
-      showModal(pokemon, item);
-    });
-  }
-
-  return {
-    add: add,
-    getAll: getAll,
-    addListItem: addListItem,
-    loadList: loadList,
-    loadDetails: loadDetails,
-    showDetails: showDetails
-    };
-})();
-
-//calling loadList
-pokemonRepository.loadList().then(function() {
-  pokemonRepository.getAll().forEach(function(pokemon){ //creates pokemon button
-    pokemonRepository.addListItem(pokemon);
-  });
-});
-
-// modal IIFE displays pokemon details in modal
-(function(){
+  //modal to show pokemon details
   function showModal(title, text){
     const modalContainer = document.querySelector('#modal-container');
 
@@ -166,4 +141,27 @@ pokemonRepository.loadList().then(function() {
     const modalContainer = document.querySelector('#modal-container');
     modalContainer.classList.remove('is-visible');
   }
+
+  //show more details of pokemon
+  function showDetails(item){
+    pokemonRepository.loadDetails(item).then(function () {
+      showModal(pokemon, item);
+    });
+  }
+
+  return {
+    add: add,
+    getAll: getAll,
+    addListItem: addListItem,
+    loadList: loadList,
+    loadDetails: loadDetails,
+    showDetails: showDetails
+    };
 })();
+
+//calling loadList
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon){ //creates pokemon button
+    pokemonRepository.addListItem(pokemon);
+  });
+});
