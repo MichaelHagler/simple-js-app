@@ -91,7 +91,7 @@ const pokemonRepository = (function () {
   }
 
   //modal to show pokemon details
-  function showModal(title, text){
+  function showModal(pokemon, details){
     const modalContainer = document.querySelector('#modal-container');
 
     modalContainer.innerHTML = '';
@@ -108,10 +108,10 @@ const pokemonRepository = (function () {
 
     //modal content
     const pokemonName = document.createElement('h1');
-    pokemonName.innerText = title;
+    pokemonName.innerText = pokemon;
 
     const pokemonDetails = document.createElement('p');
-    pokemonDetails.innerText = text;
+    pokemonDetails.innerText = details.height;
 
     //const pokemonPic = document.createElement('img');
     //pokemonPic.src = img;
@@ -150,7 +150,8 @@ const pokemonRepository = (function () {
   //show more details of pokemon
   function showDetails(item){
     loadDetails(item).then(function () {
-      showModal(pokemon.name, item.height);
+      console.log(pokemon);
+      showModal(pokemon, details.height);
     });
   }
 
