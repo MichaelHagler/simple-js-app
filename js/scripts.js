@@ -149,9 +149,9 @@ const pokemonRepository = (function () {
   }
 
   //show more details of pokemon
-  function showDetails(item){
-    loadDetails(item).then(function () {
-      showModal(item);
+  function showDetails(pokemon){
+    loadDetails(pokemon).then(function () {
+      showModal(pokemon);
     });
   }
 
