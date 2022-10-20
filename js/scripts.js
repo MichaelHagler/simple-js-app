@@ -74,16 +74,16 @@ const pokemonRepository = (function () {
     })
   }
 
-  function loadDetails(item) {
-    const url = item.detailsUrl;
+  function loadDetails(pokemon) {
+    const url = pokemon.detailsUrl;
     return fetch(url).then(function (response) {
       //showLoadingMessage();
       return response.json();
     }).then(function (details) {
       //hideLoadingMessage();
-      item.imageUrl = details.sprites.front_default;
-      item.height = details.height;
-      item.types = details.types;
+      pokemon.imageUrl = details.sprites.front_default;
+      pokemon.height = details.height;
+      pokemon.types = details.types;
     }).catch(function (e) {
       //hideLoadingMessage();
       console.error(e);
