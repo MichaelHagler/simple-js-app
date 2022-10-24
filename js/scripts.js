@@ -24,12 +24,14 @@ const pokemonRepository = (function () {
 
   // add list of pokemon on webpage
   function addListItem(pokemon){
-    const pokemonList = document.querySelector(".pokemon-list");
+    const pokemonList = document.querySelector(".list-group");
     const listpokemon = document.createElement("li");
     const button = document.createElement("button");
 
+    $("li").addClass("group-list-item");
+
     button.innerText = pokemon.name;
-    button.classList.add("button-class");
+    button.classList.add("btn-primary");
     button.addEventListener("click", function (event) {
       showDetails(pokemon);
     });
