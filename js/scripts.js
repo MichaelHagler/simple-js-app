@@ -31,7 +31,10 @@ const pokemonRepository = (function () {
     $("li").addClass("group-list-item");
 
     button.innerText = pokemon.name;
-    button.classList.add("btn-primary");
+    $("button").addClass("btn btn-primary");
+    $("button").attr("type", "button");
+    $("button").attr("data-toggle", "modal");
+    $("button").attr("data-target", "#exampleModal");
     button.addEventListener("click", function (event) {
       showDetails(pokemon);
     });
