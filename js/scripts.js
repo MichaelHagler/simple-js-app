@@ -38,24 +38,6 @@ const pokemonRepository = (function () {
     pokemonList.appendChild(listpokemon);
   }
 
-  //loading messages
-  // function showLoadingMessage() {
-  //   const messageBox = document.querySelector("div");
-  //   const message = document.createElement("p");
-
-  //   messageBox.classList.add("loading-messages");
-  //   message.innerText = "Catching Pokemon...";
-
-  //   messageBox.appendChild(message);
-  // }
-
-  // function hideLoadingMessage() {
-  //   setTimeout(function() {
-  //     document.querySelector("div").classList.remove("loading-messages");
-  //     document.querySelector("p").remove();
-  //   }, 500);
-  // }
-
   //load pokemon from api
   function loadList() {
     return fetch(apiUrl).then(function (response) {
@@ -77,15 +59,12 @@ const pokemonRepository = (function () {
   function loadDetails(pokemon) {
     const url = pokemon.detailsUrl;
     return fetch(url).then(function (response) {
-      //showLoadingMessage();
       return response.json();
     }).then(function (details) {
-      //hideLoadingMessage();
       pokemon.imageUrl = details.sprites.front_default;
       pokemon.height = details.height;
       pokemon.types = details.types;
     }).catch(function (e) {
-      //hideLoadingMessage();
       console.error(e);
     });
   }
