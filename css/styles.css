@@ -9,6 +9,10 @@ body{
   line-height: 1.6;
 }
 
+.list-group{
+  margin-top: 60px;
+}
+
 /*.loading-messages{
   display: flex;
   align-content: center;
