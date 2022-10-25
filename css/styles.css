@@ -25,11 +25,11 @@ body{
 }*/
 
 /*hide modal and then when model is shown it follows this css*/
-#modal-conatiner{
+/*#modal-conatiner{
   display: none;
-}
+}*/
 
-#modal-container.is-visible{
+/*#modal-container.is-visible{
   position: fixed;
   padding: 20px;
   box-sizing: border-box;
@@ -39,19 +39,19 @@ body{
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
 
-  /*shows above other content*/
+  /*shows above other content
   z-index:999;
 
-  /*for scrolling*/
+  /*for scrolling
   overflow: auto;
 
-  /*center the modal*/
+  /*center the modal
   display: grid;
   text-align: center;
-}
+}*/
 
 /*modal that displays pokemon details*/
-.modal{
+/*.modal{
   margin: auto;
   display: inline-block;
   box-sizing: border-box;
@@ -79,14 +79,14 @@ body{
 }
 
 
-/*styles the list of pokemon*/
+/*styles the list of pokemon
 .pokemon-list{
   list-style: none;
   text-align: center;
 }
 
 .button-class{
-  background-color: green; /* Green */
+  background-color: green; /* Green 
   border: none;
   color: white;
   padding: 16px 32px;
@@ -95,7 +95,7 @@ body{
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
-  -webkit-transition-duration: 0.4s; /* Safari */
+  -webkit-transition-duration: 0.4s; /* Safari 
   transition-duration: 0.4s;
   cursor: pointer;
   background-color: white;
@@ -108,4 +108,4 @@ body{
 .button-class:hover{
   background-color: rgba(0, 225, 0, 0.4);
   transform: scale(1.1);
-}
+}*/
