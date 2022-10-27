@@ -88,8 +88,8 @@ const pokemonRepository = (function () {
     const pokemonDetails = $("<p>" + "Height: " + pokemon.height + "</p>");
     //const pokemonTypes = $("<p>" + "type(s): " + pokemon.types + "</p>");
 
-    const pokemonPic = $("<img class='modal-img' style='width:50%'>");
-    pokemonPic.attr("scr", pokemon.imageUrl);
+    const pokemonPic = $("<img class='modal-img' alt='image of pokemon' style='width:50%'>");
+    pokemonPic.attr("src", pokemon.imageUrl);
 
     //render code
     modalTitle.append(pokemonName);
