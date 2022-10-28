@@ -24,16 +24,13 @@ const pokemonRepository = (function () {
 
   // add list of pokemon on webpage
   function addListItem(pokemon){
-    const pokemonList = $(".list-group").append("<li class='group-list-item'></li>");
-    const button = $("<button></button>");
+    const pokemonList = $(".list-group").append("<li></li>");
+    const button = $(
+      `<button style="width:100%; margin-bottom: 20px;" class="btn btn-primary" type="button"
+      data-toggle="modal" data-target="#modalContainer">${pokemon.name}</button>`
+      );
 
-    $(pokemonList).append(button);
-    $(button).addClass("btn btn-primary");
-    $(button).attr("type", "button");
-    $(button).attr("data-toggle", "modal");
-    $(button).attr("data-target", "#modalContainer");
-    $(button).html(pokemon.name);
-    $(button).on("click", function (event) {
+    $(button).on("click", function () {
       showDetails(pokemon);
     });
 
