@@ -2,14 +2,14 @@
   box-sizing: border-box;
 }
 
-body{
-  font-family: 'Roboto', sans-serif;
+body {
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.6;
 }
 
-.list-group{
+.list-group {
   margin-top: 75px;
   margin-bottom: 20px;
   list-style: none;
