@@ -75,7 +75,6 @@ const pokemonRepository = (function () {
 
   //modal to show pokemon details
   function showModal(pokemon) {
-    const modalHeader = $(".modal-header");
     const modalTitle = $(".modal-title");
     const modalBody = $(".modal-body");
 
